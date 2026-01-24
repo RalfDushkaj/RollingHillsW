@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useState} from 'react'
 import {Link} from 'react-router-dom'
 import Villafragment1 from '../assets/images/villafragment1.jpg';
 import Tipi1 from '../assets/Villasimages/Tipi-1.jpg';
@@ -30,6 +30,51 @@ const ContentVillas = () => {
     {id:12, label:"Type 12", image:Tipi12},
   ]
 
+  const [form, setForm]=useState({
+   name:"",
+   email:"",
+   phone:"",
+   message:"",
+  });
+
+  const fields=[
+    {id:1, name:'name', label:'Full Name', required:true, type:'text'},
+    {id:2, name:'email', label:'Email', required:true, type:'email'},
+    {id:3, name:'phone', label:'Phone Number', required:true, type:'number'},
+    {id:4, name:'message', label:'Message', required:false, type:'textarea'},
+  ];
+
+  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState('');
+
+  const validateForm = () =>{
+    const newErrors = {};
+      fields.forEach((field) => {
+        if(field.required && !form[field.name].trim()){
+          newErrors[field.name] ='This is a Required Field'
+        }
+        setErrors(newErrors);
+      });
+
+      return Object.keys(newErrors).length === 0;
+  }
+
+    const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      setSuccess("Form submitted successfully!");
+    } else {
+      setSuccess('');
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,[name]: value,}));
+  };
+
   return (
     <>
       <section className='w-full h-[80vh] bg-center bg-cover overflow-hidden'>
@@ -56,6 +101,7 @@ const ContentVillas = () => {
          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-6xl overflow-hidden">
           {types.map((type) => (
             <a 
+              href='#'
               key={type.id} 
               className='relative overflow-hidden rounded-lg border border-gray-200 shadow-md aspect-[4/3]'
               >
@@ -78,6 +124,50 @@ const ContentVillas = () => {
           ))}
 
          </div>
+      </section>
+
+      <section className='py-20 px-10 bg-[#E7F1F2]'>
+        <h1 className='text-7xl text-[#0B3B47] mb-8 text-center font-medium'>Book an Appointment</h1>
+        <form className='flex flex-col items-center' onSubmit={handleSubmit}>
+         
+         {fields.map((field) =>(
+          <div key={field.id} className="w-1/2 flex flex-col">
+            <label htmlFor={field.name} className="text-lg my-2 text-[#0B3B47] font-medium">
+              {field.label}
+            </label>
+            
+            {field.type === 'textarea' ? (
+              <textarea
+              id={field.name}
+              name={field.name}
+              value={form[field.name]}
+              onChange={handleChange}
+              className='h-[100px] px-2 py-2 border border-gray-300 rounded-md'
+              />
+            ):(
+              <input
+               id={field.name}
+               type={field.type}
+               name={field.name}
+               value={form[field.name]}
+               onChange={handleChange}
+               className='h-[40px] px-2 py-2 border border-gray-300 rounded-md'
+              />
+            )}
+             {errors[field.name] && (
+             <p className="text-red-500 text-sm mt-1">{errors[field.name]}</p>)}
+          </div>
+         ))}
+    
+         <button 
+            type='submit' 
+            className='bg-emerald-900 text-white 
+            rounded-md px-8 py-3 mt-5 text-sm font-semibold tracking-wide 
+            transition-all ease-in-out duration-100 hover:rounded-full hover:scale-105'>
+               Submit
+          </button>
+           {success && <p className="text-green-500 mt-5 text-4xl">{success}</p>}
+        </form> 
       </section>
     </>
   );

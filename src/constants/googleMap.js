@@ -1,0 +1,2 @@
+const googleMap = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d896.4061183166318!2d19.8776058!3d41.3203054!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13503771a183015d%3A0xcc9268e97ad9cbc3!2sRolling%20Hills%20Liqeni!5e1!3m2!1sen!2s!4v1769175038366!5m2!1sen!2s";
+export default googleMap;

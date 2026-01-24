@@ -1,4 +1,4 @@
-import React from 'react' 
+import React, { useState } from 'react' 
 import AboutFragment1 from '../assets/images/AboutFragment1.jpg';
 import { Link} from 'react-router-dom';
 import piazza1 from '../assets/images/piazza1.jpg';
@@ -58,6 +58,8 @@ const ContentAbout = () => {
     {id:6, title:'Direct pedestrian access to the first floor'},
   ]
 
+  
+    
   return (
     <>
      <section className='w-full h-[80vh] bg-center bg-cover'>
@@ -152,7 +154,9 @@ const ContentAbout = () => {
             </div>
             ))}
           </div>    
-     </section>
+      </section>
+
+    
     </> 
   ) 
 }
