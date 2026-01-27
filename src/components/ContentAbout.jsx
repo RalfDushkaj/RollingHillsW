@@ -62,7 +62,7 @@ const ContentAbout = () => {
     
   return (
     <>
-     <section className='w-full h-[80vh] bg-center bg-cover'>
+     <section className='w-full h-[90vh] bg-center bg-cover'>
         <img src={AboutFragment1} alt="About Hero Image" className='w-full h-full object-cover brightness-75'/>
         <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full'>
           <h1 className='text-white text-7xl font-thin drop-shadow-2xl'data-aos='fade-up' >About Us</h1>

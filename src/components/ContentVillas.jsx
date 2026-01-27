@@ -1,34 +1,9 @@
 import {React, useState} from 'react'
 import {Link} from 'react-router-dom'
 import Villafragment1 from '../assets/images/villafragment1.jpg';
-import Tipi1 from '../assets/Villasimages/Tipi-1.jpg';
-import Tipi2 from '../assets/Villasimages/Tipi-2.png';
-import Tipi3 from '../assets/Villasimages/Tipi-3.jpg';
-import Tipi5 from '../assets/Villasimages/Tipi-5.jpg';
-import Tipi6 from '../assets/Villasimages/Tipi-6.jpg';
-import Tipi7 from '../assets/Villasimages/Tipi-7.jpg';
-import Tipi8 from '../assets/Villasimages/Tipi-8.jpg';
-import Tipi9 from '../assets/Villasimages/Tipi-9.jpg';
-import Tipi10 from '../assets/Villasimages/Tipi-10.jpg';
-import Tipi11 from '../assets/Villasimages/Tipi-11.jpg';
-import Tipi12 from '../assets/Villasimages/Tipi-12.jpg';
+import { types } from '../constants/data';
 
 const ContentVillas = () => {
-
-  const types =[
-    {id:1, label:"Type 1", image:Tipi1},
-    {id:2, label:"Type 2", image:Tipi2},
-    {id:3, label:"Type 3", image:Tipi3},
-    {id:4, label:"Type 4", image:Tipi1},
-    {id:5, label:"Type 5", image:Tipi5},
-    {id:6, label:"Type 6", image:Tipi6},
-    {id:7, label:"Type 7", image:Tipi7},
-    {id:8, label:"Type 8", image:Tipi8},
-    {id:9, label:"Type 9", image:Tipi9},
-    {id:10, label:"Type 10", image:Tipi10},
-    {id:11, label:"Type 11", image:Tipi11},
-    {id:12, label:"Type 12", image:Tipi12},
-  ]
 
   const [form, setForm]=useState({
    name:"",
@@ -77,7 +52,7 @@ const ContentVillas = () => {
 
   return (
     <>
-      <section className='w-full h-[80vh] bg-center bg-cover overflow-hidden'>
+      <section className='w-full h-[90vh] bg-center bg-cover overflow-hidden'>
          <img src={Villafragment1} alt="Villas Hero Image" className='w-full h-full object-cover brightness-90 animate-zoom-in'/>
          <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
            <h1 className='text-white text-7xl font-thin drop-shadow-2xl' data-aos='fade-up'>Experienxe premium style in every detail</h1>
@@ -100,8 +75,8 @@ const ContentVillas = () => {
 
          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-6xl overflow-hidden">
           {types.map((type) => (
-            <a 
-              href='#'
+            <Link
+              to={`/villas/${type.slug}`}
               key={type.id} 
               className='relative overflow-hidden rounded-lg border border-gray-200 shadow-md aspect-[4/3]'
               >
@@ -120,7 +95,7 @@ const ContentVillas = () => {
                 >
                 {type.label}
                 </button>
-            </a>
+            </Link>
           ))}
 
          </div>

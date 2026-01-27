@@ -42,6 +42,7 @@ const ContentContact = () => {
       )},
   ];
 
+
   const [form, setForm] =useState({
     name:'',
     email:'',
@@ -77,6 +78,7 @@ const ContentContact = () => {
     return Object.keys(newError).length === 0;
   }
 
+
   const handleChange = (e) =>{
     const{name, value, type, checked} =e.target;
 
@@ -85,6 +87,7 @@ const ContentContact = () => {
       [name]: type === 'checkbox' ? checked : value,
     }))
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -96,6 +99,7 @@ const ContentContact = () => {
 
   return (
     <>
+    {/* Contact Info */}
      <section className='bg-[#dae6e7] py-40 px-10 flex flex-col justify-center max1300:px-0 gap-20 mb-20 max820:gap-1' data-aos="fade-in">
       <div className='flex flex-col justify-center items-center gap-8 mx-auto max-w-6xl'>
         <h1 className='text-6xl font-extrabold text-[#0c513a] text-center max1300:text-6xl '>Location</h1>
@@ -123,6 +127,7 @@ const ContentContact = () => {
      </section>
 
      <section className='py-20 px-10 grid grid-cols-2 gap-20 max1300:grid-cols-1' data-aos="fade-up">
+      {/* Google Map iframe */}
       <div className='flex justify-center items-center'>
        <iframe 
         title="Rolling Hills Location"
@@ -137,49 +142,57 @@ const ContentContact = () => {
       <div className='flex flex-col justify-start w-full gap-5'>
         <p className='text-4xl text-[#0c513a]'>Contact Now</p>
        <form onSubmit={handleSubmit} className='flex flex-col gap-5 w-full mb-5'> 
+        {/* Form fields */}
         <div className='flex gap-5 mt-5'>
-          <input
-           type='text'
-           placeholder='Name'
-           name='name'
-           value={form.name}
-           className='border-2 border-[#0c513a] w-1/2 py-2 px-2'
-           onChange={handleChange}
-          />
-          {error.name && <p className="text-red-500 text-sm">{error.name}</p>}
-          <input
-           type='email'
-           placeholder='Email'
-           name="email"
-           value={form.email}
-           className='border-2 border-[#0c513a]  w-1/2 py-2 px-2'
-           onChange={handleChange}
-          />
-          {error.email && <p className="text-red-500 text-sm">{error.email}</p>}
+          <div className='flex flex-col w-1/2 gap-2'>
+            <input
+            type='text'
+            placeholder='Name'
+            name='name'
+            value={form.name}
+            className='border-2 border-[#169b6e] w-full py-2 px-2'
+            onChange={handleChange}
+            />
+            {error.name && <p className="text-red-500 text-sm">{error.name}</p>}
+          </div>
+          <div className='flex flex-col w-1/2 gap-2'>
+            <input
+            type='email'
+            placeholder='Email'
+            name="email"
+            value={form.email}
+            className='border-2 border-[#169b6e]  w-full py-2 px-2'
+            onChange={handleChange}
+            />
+            {error.email && <p className="text-red-500 text-sm">{error.email}</p>}
+          </div>
         </div>
 
-        <textarea
-         type='text'
-         placeholder='Message'
-         name="message"
-         value={form.message}
-         className='border-2 border-[#0c513a] h-[150px] w-full px-2 py-2'
-         onChange={handleChange}
-        />
-        {error.message && <p className="text-red-500 text-sm font-medium">{error.message}</p>}
-        <div className='flex flex-row gap-2 justify-center max600:flex-col'>
-          <input
-          type='checkbox'
-          name="agree"
-          value={form.agree}
+          <textarea
+          type='text'
+          placeholder='Message'
+          name="message"
+          value={form.message}
+          className='border-2 border-[#169b6e] h-[150px] w-full px-2 py-2'
           onChange={handleChange}
           />
+          {error.message && <p className="text-red-500 text-sm font-medium">{error.message}</p>}
+
+          <div className='flex flex-row gap-2  max600:flex-col'>
+              <input
+                type='checkbox'
+                name="agree"
+                value={form.agree}
+                onChange={handleChange}
+              /> 
+              <span className='text-gray-700'>I CONFIRM THAT I HAVE READ AND AGREE TO THE PRIVACY POLICY</span>
+          </div>
           {error.agree && <p className="text-red-500 text-sm">{error.agree}</p>}
-          <span className='text-gray-700'>I CONFIRM THAT I HAVE READ AND AGREE TO THE PRIVACY POLICY</span>
-        </div>
-         {success && <p className="text-green-500 text-sm">{success}</p>}
+          {success && <p className="text-[#117956] text-4xl text-center">{success}</p>}
+
         </form>
-        <button onClick={handleSubmit} type='submit' className='bg-[#0c513a] text-white text-2xl py-2 hover:bg-[#0a3f2d] transition ease-in-out '>
+        {/* Submit Button */}
+        <button onClick={handleSubmit} type='submit' className='bg-[#0c513a] text-white text-xl py-2 hover:bg-[#0a3f2d] transition ease-in-out '>
           Submit
         </button>
       </div>
