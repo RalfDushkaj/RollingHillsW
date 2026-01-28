@@ -1,13 +1,11 @@
 import React from 'react'
-import ContentVillas from '../components/ContentVillas'
+import VillasInfoContent from '../components/VillasInfoContent.jsx';
 
 const VillasInfo = () => {
-  
 
-  
   return (
-   <div>villas</div>
+   <VillasInfoContent />
   )
 }
 
-export default VillasInfo
+export default VillasInfo;
